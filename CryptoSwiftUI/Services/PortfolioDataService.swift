@@ -22,6 +22,7 @@ class PortfolioDataService {
             if let error = error {
                 print("Error loading Core Data \(error)")
             }
+            self.getPortfolio()
         }
     }
     
@@ -37,15 +38,14 @@ class PortfolioDataService {
     func updatePortfolio(coin: Coin, amount: Double) {
         
         if let entity = saveEntities.first(where: {$0.coinID == coin.id}) {
-            
             if amount > 0 {
                 update(entity: entity, amount: amount)
             } else {
-                    
+                remove(entity: entity)
             }
-            
+        } else {
+            add(coin: coin, amount: amount)
         }
-            
         
     }
     

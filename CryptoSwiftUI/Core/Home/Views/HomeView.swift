@@ -102,7 +102,7 @@ extension HomeView {
     private var portfolioCoinList: some View {
         List {
             ForEach(vm.portfolioCoin) { coin in
-                CoinRowView(coin: coin, showHoldingsColumn: false)
+                CoinRowView(coin: coin, showHoldingsColumn: showPortfolio)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
             }
         }
@@ -113,7 +113,7 @@ extension HomeView {
         HStack {
             Text("Coin")
             Spacer()
-            if showPortfolio{
+            if showPortfolio {
                 Text("Holdings")
             }
             Text("Price")
